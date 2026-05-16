@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт со стихами - Мир поэзии</title>
+    <link rel="stylesheet" href="poetry_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title"><i class="fas fa-book-open"></i> Мир Поэзии</h1>
+                <p class="site-subtitle">Создайте свою коллекцию стихов</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="#add-poem"><i class="fas fa-plus-circle"></i> Добавить стих</a></li>
+                    <li><a href="#my-poems"><i class="fas fa-feather-alt"></i> Мои стихи</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> О сайте</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h2>Создайте свою коллекцию поэзии</h2>
+                <p>Добавляйте любимые стихи, сохраняйте вдохновляющие строки и создавайте персональную библиотеку поэзии. Начните с добавления своего первого стихотворения!</p>
+                <a href="#add-poem" class="cta-button"><i class="fas fa-plus"></i> Добавить первый стих</a>
+            </div>
+            <div class="hero-image">
+                <div class="poetry-quote">
+                    <p>"Поэзия — это музыка души"</p>
+                    <span class="quote-author">— Вольтер</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="add-poem" class="add-poem-section">
+            <h2 class="section-title"><i class="fas fa-plus-circle"></i> Добавить новый стих</h2>
+            <div class="add-poem-form-container">
+                <form id="add-poem-form" class="add-poem-form">
+                    <div class="form-group">
+                        <label for="poem-title"><i class="fas fa-heading"></i> Название стиха</label>
+                        <input type="text" id="poem-title" name="title" placeholder="Введите название стиха" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="poem-author"><i class="fas fa-user-pen"></i> Автор</label>
+                        <input type="text" id="poem-author" name="author" placeholder="Введите имя автора" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="poem-text"><i class="fas fa-pen-nib"></i> Текст стиха</label>
+                        <textarea id="poem-text" name="text" rows="8" placeholder="Введите текст стиха. Каждую строку начинайте с новой строки." required></textarea>
+                        <small class="form-hint">Используйте Enter для разделения строк. Для создания строф оставляйте пустую строку.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-tags"></i> Категории</label>
+                        <div class="categories-checkboxes">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="russian"> Русская поэзия
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="foreign"> Зарубежная поэзия
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="love"> Любовная лирика
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="nature"> Природа
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="philosophy"> Философская
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn"><i class="fas fa-save"></i> Сохранить стих</button>
+                        <button type="button" class="clear-btn" id="clear-form"><i class="fas fa-broom"></i> Очистить форму</button>
+                    </div>
+                </form>
+                
+                <div class="form-preview">
+                    <h3><i class="fas fa-eye"></i> Предпросмотр</h3>
+                    <div class="preview-card" id="poem-preview">
+                        <div class="preview-header">
+                            <h4 class="preview-title">Название появится здесь</h4>
+                            <span class="preview-author">Автор</span>
+                        </div>
+                        <div class="preview-content">
+                            <p>Текст стиха будет отображен здесь после ввода.</p>
+                        </div>
+                        <div class="preview-footer">
+                            <span class="preview-categories">Категории: не выбраны</span>
+                        </div>
+                    </div>
+                    <div class="preview-hint">
+                        <p><i class="fas fa-lightbulb"></i> Подсказка: стих автоматически появится в вашей коллекции после сохранения.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="my-poems" class="poems-section">
+            <h2 class="section-title"><i class="fas fa-feather-alt"></i> Моя коллекция стихов</h2>
+            
+            <div class="collection-stats" id="collection-stats">
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>Стихотворений</p>
+                </div>
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>Авторов</p>
+                </div>
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>Категорий</p>
+                </div>
+            </div>
+            
+            <div class="poems-filter">
+                <button class="filter-btn active" data-filter="all">Все стихи</button>
+                <button class="filter-btn" data-filter="russian">Русские</button>
+                <button class="filter-btn" data-filter="foreign">Зарубежные</button>
+                <button class="filter-btn" data-filter="love">Любовная лирика</button>
+                <button class="filter-btn" data-filter="nature">Природа</button>
+                <button class="filter-btn" data-filter="philosophy">Философская</button>
+            </div>
+            
+            <div class="empty-state" id="empty-state">
+                <div class="empty-state-content">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Ваша коллекция пуста</h3>
+                    <p>Добавьте свой первый стих, используя форму выше.</p>
+                    <a href="#add-poem" class="cta-button"><i class="fas fa-plus"></i> Добавить стих</a>
+                </div>
+            </div>
+            
+            <div class="poems-grid" id="poems-grid">
+                <!-- Стихи будут добавляться динамически через JavaScript -->
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> О сайте</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Сайт "Мир Поэзии" — это персональная коллекция стихов. Вы можете добавлять любимые стихотворения, классифицировать их и создавать свою уникальную библиотеку поэзии.</p>
+                    <p>Все добавленные стихи сохраняются в вашем браузере, поэтому они будут доступны при следующем посещении сайта.</p>
+                    <p>Используйте этот сайт для сохранения вдохновляющих строк, изучения поэзии или создания собственной антологии любимых произведений.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>Бесплатно</h3>
+                        <p>И всегда будет</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Без регистрации</h3>
+                        <p>Работает локально</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Просто</h3>
+                        <p>Добавляйте в один клик</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Мир Поэзии</h3>
+                    <p>Персональная коллекция стихов. Создано с любовью к поэзии.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#add-poem">Добавить стих</a></li>
+                        <li><a href="#my-poems">Мои стихи</a></li>
+                        <li><a href="#about">О сайте</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Технологии</h3>
+                    <p><i class="fas fa-code"></i> HTML5, CSS3, JavaScript</p>
+                    <p><i class="fas fa-database"></i> LocalStorage</p>
+                    <p><i class="fas fa-paint-brush"></i> Адаптивный дизайн</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Мир Поэзии. Все права защищены.</p>
+                <p>Сайт создан для образовательных целей. Стихи добавляются пользователями.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for full poem -->
+    <div class="modal" id="poem-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-poem-title"></h2>
+            <p id="modal-poem-author"></p>
+            <div class="modal-poem-text" id="modal-poem-text"></div>
+            <div class="modal-actions">
+                <button class="modal-delete-btn" id="modal-delete-btn"><i class="fas fa-trash"></i> Удалить стих</button>
+                <button class="modal-close-btn" id="modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="poetry_script.js"></script>
+</body>
+</html>
